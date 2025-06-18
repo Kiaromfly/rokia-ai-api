@@ -6,10 +6,11 @@ export default async function handler(req, res) {
   const { prompt } = req.body;
 
   try {
-    const backendResponse = await fetch("http://91.99.175.12:8080/chat", {
+    const backendResponse = await fetch("http://91.99.175.12:8080/ask", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Authorization": "Bearer RokiaLab-2025-ACCESS"
       },
       body: JSON.stringify({ prompt })
     });
