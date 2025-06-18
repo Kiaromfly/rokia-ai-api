@@ -1,10 +1,8 @@
 export default async function handler(req, res) {
-  // CORS headers
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // Rispondere alle richieste OPTIONS (preflight)
   if (req.method === "OPTIONS") {
     return res.status(200).end();
   }
@@ -25,7 +23,6 @@ export default async function handler(req, res) {
 
     const data = await response.json();
     return res.status(200).json(data);
-
   } catch (error) {
     console.error("Errore nel proxy:", error);
     return res.status(500).json({ error: "Errore di comunicazione con il server AI." });
